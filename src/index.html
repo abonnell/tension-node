@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tension Pool Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <div class="current-pool">
+      <h1>Current Tension Pool:</h1>
+      <h1 class="pool">0</h1>
+    </div>
+    <div class="button">
+      <button class="add">Add a Die</button>
+      <button class="add-and-roll">Add a Die and Roll the Pool</button>
+      <button class="roll-and-keep">Roll and Keep the Pool</button>
+      <!--Handled automatically
+            <button>Roll and Clear the Pool</button>
+            -->
+    </div>
+
+    <div class="rolls">
+      <h2>Roll results:</h2>
+      <h2 class="result"></h2>
+    </div>
+
+    <div class="usage">
+      <h3>What is a tension pool?</h3>
+      <p>
+        A tension pool is a tabletop RPG mechanic used to abstract time spent or
+        actions taken in a given situation or scenario.
+      </p>
+      <p>
+        The tension pool boils down to even if nothing is happening, something
+        might happen
+      </p>
+      <h3>How does it work?</h3>
+      <p>
+        Once you establish what the tension pool represents - minutes, hours,
+        split-second actions, activities, etc - there are only four things that
+        can be done with it!
+      </p>
+
+      <ul>
+        <li>
+          <h4>Add a Die.</h4>
+          <p>
+            You add a die whenever the party does something that chews up
+            whatever amount of time each die represents OR whenever a player
+            takes a careful or deliberate action.
+          </p>
+        </li>
+        <li>
+          <h4>Roll the Pool.</h4>
+          <p>
+            You roll the dice whenever the party does something reckless, crazy,
+            or dangerous that might cause them trouble OR whenever a player
+            takes a reckless, brash, or crazy action. If there are no dice in
+            the pool when you roll it, add one die and then put it aside again.
+            You always roll at least one die when you roll the Tension Pool.
+          </p>
+        </li>
+        <li>
+          <h4>Add a Die, Then Roll the Pool.</h4>
+          <p>
+            You add a die and then roll the pool whenever the party does
+            something reckless, crazy, or dangerous that also chews up whatever
+            amount of time each die represents.
+          </p>
+        </li>
+        <li>
+          <h4>Roll and Clear the Pool.</h4>
+          <p>
+            And finally, whenever you add the sixth die to the pool, no matter
+            what, you roll all the dice in the Tension Pool and then put the
+            dice aside, clearing the pool.
+          </p>
+        </li>
+      </ul>
+      <p>
+        Whenever you roll the pool, if any dice show a ‘1,’ that means a
+        Complication arises. Something happens to make the situation worse.
+      </p>
+    </div>
+
+    <div class="sources">
+      <h3>Tension Pool Tracker</h3>
+      <p>
+        A web implementation of the
+        <a href="https://theangrygm.com/making-things-complicated/"
+          >Angry GM's
+        </a>
+        tension pool mechanics
+      </p>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
