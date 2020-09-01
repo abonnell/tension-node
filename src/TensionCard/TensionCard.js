@@ -1,12 +1,12 @@
 import './TensionCard.css';
 import React from 'react';
 
-const TensionCard = props => {
+const TensionCard = ({ label, value }) => {
   return (
     <div className='ui card'>
       <div className='ui statistic'>
-        <div className='label'>{props.label}</div>
-        <div className='value'>{props.value}</div>
+        <div className='label'>{label}</div>
+        <div className='value'>{value}</div>
       </div>
     </div>
   );
