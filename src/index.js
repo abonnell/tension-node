@@ -6,7 +6,15 @@ import TensionButton from './TensionButton/TensionButton';
 import TensionCard from './TensionCard/TensionCard';
 
 class App extends React.Component {
-  state = { currentPool: 1, rollResults: [null] };
+  constructor(props) {
+    super(props);
+    this.state = { currentPool: 0, rollResults: [null] };
+    this.incrementPool = this.incrementPool.bind(this);
+  }
+
+  incrementPool = () => {
+    this.setState({ currentPool: this.state.currentPool + 1 });
+  };
 
   render() {
     return (
@@ -22,8 +30,11 @@ class App extends React.Component {
           />
         </div>
         <div className='button-holder'>
-          {/* TODO onclick handler */}
-          <TensionButton pool={this.state.currentPool} />
+          <TensionButton
+            className='ui button'
+            buttonName='Add One Die'
+            onClick={this.incrementPool}
+          />
           <TensionButton />
           <TensionButton />
         </div>
@@ -33,6 +44,7 @@ class App extends React.Component {
 
   componentDidUpdate() {
     if (this.state.currentPool >= 6) {
+      //TODO roll this.state.currentPool dice
       this.setState({ currentPool: 0 });
     }
   }

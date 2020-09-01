@@ -1,13 +1,11 @@
 import React from 'react';
 
-const TensionButton = props => {
-  // const incrementPool = prevPool => {
-  //   this.setState({ currentPool: this.state.prevPool + 1 });
-  // };
-
+const TensionButton = ({ buttonName, onClick }) => {
   return (
     <div>
-      <button className='ui button'>Placeholder</button>
+      <button className='ui button' onClick={onClick}>
+        {buttonName}
+      </button>
     </div>
   );
 };
