@@ -1,6 +1,8 @@
 .ui.card {
   margin: 0em 0;
   margin-top: 1em;
+  margin-right: 3em;
+  margin-left: 3em;
 }
 
 .ui.card:first-child {
