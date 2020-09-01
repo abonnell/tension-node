@@ -22,6 +22,7 @@ class App extends React.Component {
           />
         </div>
         <div className='button-holder'>
+          {/* TODO onclick handler */}
           <TensionButton pool={this.state.currentPool} />
           <TensionButton />
           <TensionButton />
