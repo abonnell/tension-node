@@ -1,0 +1,18 @@
+.card-holder {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.button-holder {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ui-button {
+  margin-left: 1em;
+  margin-right: 1em;
+}

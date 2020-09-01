@@ -1,33 +1,40 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import CurrentPool from "./CurrentPool";
-import AddDie from "./Rolling/AddDie";
-import AddRoll from "./Rolling/AddRoll";
-import RollKeep from "./Rolling/RollKeep";
-import RollResult from "./Rolling/RollResult";
+import './index.css';
 
-const App = () => {
-  return (
-    <div>
-      <div className="ui statistic">
-        <div className="label">PoolLabelPlaceholder</div>
-        <div className="value">
-          <CurrentPool />
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TensionButton from './TensionButton/TensionButton';
+import TensionCard from './TensionCard/TensionCard';
+
+class App extends React.Component {
+  state = { currentPool: 1, rollResults: [null] };
+
+  render() {
+    return (
+      <div>
+        <div className='card-holder'>
+          <TensionCard
+            label='Current Tension Pool'
+            value={this.state.currentPool}
+          />
+          <TensionCard
+            label='Tension Roll Results'
+            value={this.state.rollResults}
+          />
+        </div>
+        <div className='button-holder'>
+          <TensionButton pool={this.state.currentPool} />
+          <TensionButton />
+          <TensionButton />
         </div>
       </div>
-      <div className="ui button">
-        <AddDie className="ui button" />
-        <AddRoll className="ui button" />
-        <RollKeep className="ui button" />
-      </div>
-      <div className="ui statistic">
-        <div className="label">RollResultPlaceholder</div>
-        <div className="value">
-          <RollResult />
-        </div>
-      </div>
-    </div>
-  );
-};
+    );
+  }
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+  componentDidUpdate() {
+    if (this.state.currentPool >= 6) {
+      this.setState({ currentPool: 0 });
+    }
+  }
+}
+
+ReactDOM.render(<App />, document.querySelector('#root'));
