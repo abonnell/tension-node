@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TensionButton from './TensionButton/TensionButton';
 import TensionCard from './TensionCard/TensionCard';
+// import RollHistory from './RollHistory';
 
 class App extends React.Component {
   state = { currentPool: 0, rollResults: 0 };
@@ -27,13 +28,13 @@ class App extends React.Component {
   //If currentPool > 0, calls rollHelper
   rollAndKeep = () => {
     if (this.state.currentPool === 0) {
-      this.setState(state => {
+      this.setState(() => {
         return {
           currentPool: 1,
         };
       });
       this.rollHelper();
-      this.setState(state => {
+      this.setState(() => {
         return {
           currentPool: 0,
         };
@@ -85,14 +86,17 @@ class App extends React.Component {
             onClick={this.rollAndKeep}
           />
         </div>
-        <div>{/* TODO Roll History */}</div>
+        <div>
+          {/*TODO implement rollResults history logging. Requires redux?  */}
+          {/* <RollHistory history={this.state.rollResults} /> */}
+        </div>
       </div>
     );
   }
 
   componentDidUpdate() {
     if (this.state.currentPool >= 6) {
-      this.rollAndKeep();
+      this.rollHelper();
       this.setState({ currentPool: 0 });
     }
   }
