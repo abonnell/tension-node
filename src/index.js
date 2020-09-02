@@ -6,34 +6,62 @@ import TensionButton from './TensionButton/TensionButton';
 import TensionCard from './TensionCard/TensionCard';
 
 class App extends React.Component {
-  state = { currentPool: 0, rollResults: null };
+  state = { currentPool: 0, rollResults: 0 };
 
   //Adds one to state of currentPool
   incrementPool = () => {
-    this.setState({ currentPool: this.state.currentPool + 1 });
+    //setState(state => {...}) is used to force a state change and render immediately rather than waiting for next batch
+    this.setState(state => {
+      return { currentPool: state.currentPool + 1 };
+    });
   };
 
-  //TODO Update state between function calls
+  //Increments and rolls
   incrementPoolAndRoll = () => {
     this.incrementPool();
-    //???
     this.rollAndKeep();
   };
 
-  //Sets state of rollResults to array of length this.state.currentPool filled with random values between 1 and 6
-  //TODO If currentPool === 0, add one, roll, then subtract one
+  //ALWAYS ROLL ONE DIE, even if the current pool has no dice in it
+  //If currentPool === 0, sets currentPool = 1, calls rollHelper, then sets back to 0
+  //If currentPool > 0, calls rollHelper
   rollAndKeep = () => {
-    this.setState({
-      rollResults: Array.from({ length: this.state.currentPool }, () =>
-        Math.ceil(Math.random() * 6)
-      ).join(', '),
+    if (this.state.currentPool === 0) {
+      this.setState(state => {
+        return {
+          currentPool: 1,
+        };
+      });
+      this.rollHelper();
+      this.setState(state => {
+        return {
+          currentPool: 0,
+        };
+      });
+    } else {
+      this.rollHelper();
+    }
+  };
+
+  //Sets state of rollResults to array of length this.state.currentPool filled with random values between 1 and 6
+  rollHelper = () => {
+    //Forced state change repeated from above
+    this.setState(state => {
+      return {
+        //Creates an array of length = state.currentPool by defining an object { length: state.currentPool }
+        //Fills array with random numbers 1-6
+        //Concats array values and returns as string seperated by ', ' to be readable
+        rollResults: Array.from({ length: state.currentPool }, () =>
+          Math.ceil(Math.random() * 6)
+        ).join(', '),
+      };
     });
   };
 
   render() {
     return (
       <div>
-        <div className='card-holder'>
+        <div className='card-container'>
           <TensionCard
             label='Current Tension Pool'
             value={this.state.currentPool}
@@ -43,7 +71,7 @@ class App extends React.Component {
             value={this.state.rollResults}
           />
         </div>
-        <div className='button-holder'>
+        <div className='button-container'>
           <TensionButton
             buttonName='Add One Die'
             onClick={this.incrementPool}

@@ -1,11 +1,11 @@
-.card-holder {
+.card-container {
   display: flex;
   flex-direction: row;
   align-content: center;
   justify-content: center;
 }
 
-.button-holder {
+.button-container {
   margin-top: 1em;
   display: flex;
   flex-direction: row;
