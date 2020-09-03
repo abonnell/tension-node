@@ -5,9 +5,10 @@ import ReactDOM from 'react-dom';
 import TensionButton from './TensionButton/TensionButton';
 import TensionCard from './TensionCard/TensionCard';
 // import RollHistory from './RollHistory';
+import Usage from './Usage';
 
 class App extends React.Component {
-  state = { currentPool: 0, rollResults: 0 };
+  state = { currentPool: 0, rollResults: [] };
 
   //Adds one to state of currentPool
   incrementPool = () => {
@@ -54,14 +55,14 @@ class App extends React.Component {
         //Concats array values and returns as string seperated by ', ' to be readable
         rollResults: Array.from({ length: state.currentPool }, () =>
           Math.ceil(Math.random() * 6)
-        ).join(', '),
+        ),
       };
     });
   };
 
   render() {
     return (
-      <div>
+      <div className='ui container'>
         <div className='card-container'>
           <TensionCard
             label='Current Tension Pool'
@@ -69,7 +70,7 @@ class App extends React.Component {
           />
           <TensionCard
             label='Tension Roll Results'
-            value={this.state.rollResults}
+            value={this.state.rollResults.join(', ')}
           />
         </div>
         <div className='button-container'>
@@ -87,8 +88,12 @@ class App extends React.Component {
           />
         </div>
         <div>
-          {/*TODO implement rollResults history logging. Requires redux?  */}
+          {/*TODO implement rollResults history logging. Requires redux?*/}
+          {/* Cant get this to work. Will need to revisit at later date. */}
           {/* <RollHistory history={this.state.rollResults} /> */}
+        </div>
+        <div className='usage-container'>
+          <Usage />
         </div>
       </div>
     );

@@ -1,21 +1,16 @@
 import React from 'react';
+// import HistoryItem from './HistoryItem';
+
+//pass rollResults or rollHistory as prop
+// set rollHistory state = array
+// Add prop to state array
+// map state out as ul
 
 class RollHistory extends React.Component {
-  state = { history: [0] };
-
-  onAddItem = () => {
-    this.setState(state => {
-      const history = [this.props.history, ...state.history];
-      return history;
-    });
-  };
+  state = { history: [[]] };
 
   render() {
     return <div>{this.state.history}</div>;
-  }
-
-  componentDidUpdate() {
-    this.onAddItem();
   }
 }
 
