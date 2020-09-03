@@ -62,7 +62,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='ui container'>
+      <div className='ui container my-container'>
         <div className='card-container'>
           <TensionCard
             label='Current Tension Pool'
