@@ -1,10 +1,10 @@
-import './index.css';
+import './App.css';
 
 import React, { useState, useEffect } from 'react';
-import TensionButton from './TensionButton/TensionButton';
-import TensionCard from './TensionCard/TensionCard';
+import TensionButton from './Components/TensionButton/TensionButton';
+import TensionCard from './Components/TensionCard/TensionCard';
 // import RollHistory from './RollHistory';
-import Usage from './Usage';
+import Usage from './Components/Usage/Usage';
 
 const App = () => {
   const [currentPool, setCurrentPool] = useState(0);

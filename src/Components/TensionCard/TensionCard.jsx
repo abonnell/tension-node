@@ -12,8 +12,4 @@ const TensionCard = ({ label, value }) => {
   );
 };
 
-TensionCard.defaultProps = {
-  value: 5,
-};
-
 export default TensionCard;
