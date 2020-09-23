@@ -49,12 +49,12 @@ const App = () => {
   }, [addAndRoll]);
 
   //Rolls pool and resets to 0 if it hits 6 or more
-  // useEffect(() => {
-  //   if (currentPool >= 6 && currentPool != 0) {
-  //     rollHelper(currentPool);
-  //     setCurrentPool(0);
-  //   }
-  // }, [currentPool]);
+  useEffect(() => {
+    if (currentPool >= 6) {
+      rollHelper(currentPool);
+      setCurrentPool(0);
+    }
+  }, [currentPool]);
 
   return (
     <div className='ui container my-container'>
