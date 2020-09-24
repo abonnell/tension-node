@@ -3,7 +3,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import TensionButton from './Components/TensionButton/TensionButton';
 import TensionCard from './Components/TensionCard/TensionCard';
-// import RollHistory from './RollHistory';
+import RollHistory from './Components/RollHistory.jsx';
 import Usage from './Components/Usage/Usage';
 
 const App = () => {
@@ -57,7 +57,7 @@ const App = () => {
   }, [currentPool]);
 
   return (
-    <div className='ui container my-container'>
+    <div className='ui container my-container '>
       <div className='card-container'>
         <TensionCard label='Current Tension Pool' value={currentPool} />
         <TensionCard
@@ -73,10 +73,10 @@ const App = () => {
         />
         <TensionButton buttonName='Roll and Keep' onClick={rollAndKeep} />
       </div>
-      <div>
-        {/*TODO implement rollResults history logging. Requires redux?*/}
-        {/* Cant get this to work. Will need to revisit at later date. */}
-        {/* <RollHistory history={this.state.rollResults} /> */}
+      {/*TODO implement rollResults history logging. Requires redux?*/}
+      {/* Cant get this to work. Will need to revisit at later date. */}
+      <div className='history-container'>
+        <RollHistory result={rollResults} />
       </div>
       <div className='usage-container'>
         <Usage />
