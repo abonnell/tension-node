@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import './RollHistory.css';
+
 //pass rollResults or rollHistory as prop
 // set rollHistory state = array
 // Add prop to state array
@@ -13,14 +15,20 @@ const RollHistory = ({ result }) => {
   }, [result]);
 
   const renderHistory = history.map(item => {
-    return <ul key={result + 1 * Math.random()}>{item.join(', ')}</ul>;
+    if (item.length === 0) {
+      return;
+    }
+
+    return <p key={result + 1 * Math.random()}>{item.join(', ')}</p>;
   });
 
   return (
-    <div className='ui container'>
-      <div className='item'>
-        <h3>History</h3>
-        <div>{renderHistory}</div>
+    <div className='ui card'>
+      <div className='ui list hist-list'>
+        <div className='item'>
+          <h3>History</h3>
+          {renderHistory}
+        </div>
       </div>
     </div>
   );
