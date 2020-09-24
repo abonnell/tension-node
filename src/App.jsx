@@ -3,7 +3,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import TensionButton from './Components/TensionButton/TensionButton';
 import TensionCard from './Components/TensionCard/TensionCard';
-// import RollHistory from './RollHistory';
+import RollHistory from './Components/RollHistory/RollHistory';
 import Usage from './Components/Usage/Usage';
 
 const App = () => {
@@ -57,29 +57,34 @@ const App = () => {
   }, [currentPool]);
 
   return (
-    <div className='ui container my-container'>
-      <div className='card-container'>
-        <TensionCard label='Current Tension Pool' value={currentPool} />
-        <TensionCard
-          label='Tension Roll Results'
-          value={rollResults.join(', ')}
-        />
+    <div className='ui container grid my-container '>
+      <div className='twelve wide column'>
+        <div className='card-container'>
+          <TensionCard label='Current Tension Pool' value={currentPool} />
+          <TensionCard
+            label='Tension Roll Results'
+            value={rollResults.join(', ')}
+          />
+        </div>
+        <div className='button-container'>
+          <TensionButton buttonName='Add One Die' onClick={incrementPool} />
+          <TensionButton
+            buttonName='Add One Die, Roll'
+            onClick={incrementPoolAndRoll}
+          />
+          <TensionButton buttonName='Roll and Keep' onClick={rollAndKeep} />
+        </div>
+        <div className='usage-container'>
+          <Usage />
+        </div>
       </div>
-      <div className='button-container'>
-        <TensionButton buttonName='Add One Die' onClick={incrementPool} />
-        <TensionButton
-          buttonName='Add One Die, Roll'
-          onClick={incrementPoolAndRoll}
-        />
-        <TensionButton buttonName='Roll and Keep' onClick={rollAndKeep} />
-      </div>
-      <div>
-        {/*TODO implement rollResults history logging. Requires redux?*/}
-        {/* Cant get this to work. Will need to revisit at later date. */}
-        {/* <RollHistory history={this.state.rollResults} /> */}
-      </div>
-      <div className='usage-container'>
-        <Usage />
+
+      {/*TODO implement rollResults history logging. Requires redux?*/}
+      {/* Cant get this to work. Will need to revisit at later date. */}
+      <div className='four wide column'>
+        <div className='history-container'>
+          <RollHistory result={rollResults} />
+        </div>
       </div>
     </div>
   );
